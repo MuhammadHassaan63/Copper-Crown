@@ -1,3 +1,11 @@
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elementName: string]: any;
+    }
+  }
+}
+
 interface LogoProps {
   className?: string;
   size?: number;
@@ -13,7 +21,7 @@ export function Logo({ className = '', size = 40, showTagline = false, light = f
         style={{ width: size, height: size }}
       >
         <img
-          src="/images/image.png"
+          src="/images/images.png"
           alt="Copper & Crown logo"
           className="h-full w-full scale-[2.25] object-cover object-center"
         />
