@@ -82,7 +82,7 @@ function AdminApp() {
       <header className="admin-header">
         <div className="admin-header-inner">
           <div className="admin-brand">
-            <img src="/images/image.png" alt="Copper & Crown logo" />
+            <img src="/images/images.png" alt="Copper & Crown logo" />
             <div>
               <strong>COPPER <b>&amp;</b> CROWN</strong>
               <small>ADMIN OPERATIONS PORTAL · DEMO</small>

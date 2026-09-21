@@ -194,7 +194,7 @@ function useCart() {
 function Brand({ light = false }: { light?: boolean }) {
   return (
     <a href="#home" className="brand" onClick={(event) => { event.preventDefault(); scrollToSection('home'); }}>
-      <img src="/images/image.png" alt="Copper & Crown logo" />
+      <img src="/images/images.png" alt="Copper & Crown logo" />
       <span>
         <strong className={light ? 'light' : ''}>COPPER <b>&amp;</b> CROWN</strong>
         <small className={light ? 'light-muted' : ''}>THE ROYAL STANDARD OF ELECTRICAL CRAFTSMANSHIP</small>
