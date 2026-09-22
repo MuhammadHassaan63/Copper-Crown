@@ -82,14 +82,14 @@ type CartItem = { id: string; name: string; price: number; qty: number };
 type Lang = 'en' | 'ur';
 
 const services = [
-  { title: 'Electrical Installation', description: 'Safe, precise installation for homes, offices, and projects.', icon: PlugZap },
-  { title: 'Electrical Repair', description: 'Quick, careful fault finding and reliable repair support.', icon: Wrench },
-  { title: 'Fan Installation / Repair', description: 'Keep every room cool, quiet, and comfortable.', icon: Sparkles },
-  { title: 'Wiring Work', description: 'Neat wiring work built for dependable everyday use.', icon: Zap },
-  { title: 'Switch / Socket Work', description: 'Upgrade or repair switches, sockets, and connections.', icon: BadgeCheck },
-  { title: 'Lighting Installation / Repair', description: 'Brighten your space with practical lighting solutions.', icon: Lightbulb },
-  { title: 'Electrical Inspection', description: 'Identify concerns early with a focused inspection.', icon: ShieldCheck },
-  { title: 'Other Electrical Services', description: 'Tell us what you need and we will help find a solution.', icon: Headphones },
+  { title: 'Electrical Installation', description: 'Safe, precise installation for homes, offices, and projects.', icon: PlugZap, image: 'https://images.pexels.com/photos/27928760/pexels-photo-27928760.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Electrical Repair', description: 'Quick, careful fault finding and reliable repair support.', icon: Wrench, image: 'https://images.pexels.com/photos/14319099/pexels-photo-14319099.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Fan Installation / Repair', description: 'Keep every room cool, quiet, and comfortable.', icon: Sparkles, image: 'https://images.pexels.com/photos/3990590/pexels-photo-3990590.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Wiring Work', description: 'Neat wiring work built for dependable everyday use.', icon: Zap, image: 'https://images.pexels.com/photos/3615735/pexels-photo-3615735.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Switch / Socket Work', description: 'Upgrade or repair switches, sockets, and connections.', icon: BadgeCheck, image: 'https://images.pexels.com/photos/5691583/pexels-photo-5691583.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Lighting Installation / Repair', description: 'Brighten your space with practical lighting solutions.', icon: Lightbulb, image: 'https://images.pexels.com/photos/27562194/pexels-photo-27562194.png?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Electrical Inspection', description: 'Identify concerns early with a focused inspection.', icon: ShieldCheck, image: 'https://images.pexels.com/photos/32497160/pexels-photo-32497160.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { title: 'Other Electrical Services', description: 'Tell us what you need and we will help find a solution.', icon: Headphones, image: 'https://images.pexels.com/photos/29491360/pexels-photo-29491360.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];
 
 const reasons = [
@@ -119,15 +119,13 @@ const testimonials = [
 ];
 
 const galleryItems = [
-  { label: 'Residential Wiring', query: 'electrical wiring installation home' },
-  { label: 'Commercial Panel', query: 'electrical panel commercial building' },
-  { label: 'Lighting Setup', query: 'modern lighting installation ceiling' },
-  { label: 'Fan Installation', query: 'ceiling fan installation' },
-  { label: 'Switch & Socket', query: 'electrical switches sockets wall' },
-  { label: 'Industrial Work', query: 'industrial electrical wiring' },
+  { label: 'Residential Wiring', image: 'https://images.pexels.com/photos/3615735/pexels-photo-3615735.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { label: 'Commercial Panel', image: 'https://images.pexels.com/photos/28265032/pexels-photo-28265032.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { label: 'Lighting Setup', image: 'https://images.pexels.com/photos/27562194/pexels-photo-27562194.png?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { label: 'Fan Installation', image: 'https://images.pexels.com/photos/3990590/pexels-photo-3990590.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { label: 'Switch & Socket', image: 'https://images.pexels.com/photos/5691583/pexels-photo-5691583.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
+  { label: 'Industrial Work', image: 'https://images.pexels.com/photos/17843269/pexels-photo-17843269.jpeg?auto=compress&cs=tinysrgb&h=650&w=940' },
 ];
-
-const galleryImages: Record<string, string> = {};
 
 const t = {
   en: {
@@ -315,7 +313,7 @@ function CartDrawer({ items, onClose, onRemove, onQty }: { items: CartItem[]; on
 }
 
 function GalleryGrid() {
-  return <div className="gallery-grid">{galleryItems.map((item) => <div className="gallery-card" key={item.label}><div className="gallery-placeholder"><Zap size={32} /></div><span>{item.label}</span></div>)}</div>;
+  return <div className="gallery-grid">{galleryItems.map((item) => <div className="gallery-card" key={item.label}><img src={item.image} alt={item.label} loading="lazy" /><div className="gallery-overlay"><span>{item.label}</span></div></div>)}</div>;
 }
 
 function TestimonialSlider() {
@@ -378,7 +376,7 @@ function App() {
 
       <section className="cream-section why-section" id="why"><div className="why-intro"><span className="eyebrow">THE CC DIFFERENCE</span><h2>{tr.whyChoose}<br /><em>Copper &amp; Crown?</em></h2><p>We focus on quality, reliability, and professional service to power your needs with confidence.</p><span className="copper-rule" /></div><div className="reason-grid">{reasons.map(({ title, text, icon: Icon }) => <div className="reason-card" key={title}><Icon /><h3>{title}</h3><p>{text}</p></div>)}</div></section>
 
-      <section className="services-section" id="services"><div className="services-layout"><div className="services-copy"><SectionHeading eyebrow={tr.ourServices.toUpperCase()} title={<>Powering every <em>possibility.</em></>} text="Professional electrical solutions for the places and people that matter." light /><div className="service-promise"><span className="promise-number">08</span><span>Ways we can help<br /><b>One standard of care.</b></span></div></div><div className="service-grid">{services.map(({ title, description, icon: Icon }, index) => <article className="service-card" key={title}><div className="service-card-top"><span className="service-number">0{index + 1}</span><Icon /></div><h3>{title}</h3><p>{description}</p><button className="service-link" onClick={() => setBookingOpen(true)}>Request service <ArrowRight size={14} /></button></article>)}</div></div></section>
+      <section className="services-section" id="services"><div className="services-layout"><div className="services-copy"><SectionHeading eyebrow={tr.ourServices.toUpperCase()} title={<>Powering every <em>possibility.</em></>} text="Professional electrical solutions for the places and people that matter." light /><div className="service-promise"><span className="promise-number">08</span><span>Ways we can help<br /><b>One standard of care.</b></span></div></div><div className="service-grid">{services.map(({ title, description, icon: Icon, image }, index) => <article className="service-card" key={title}><div className="service-card-image"><img src={image} alt={title} loading="lazy" /><div className="service-card-icon"><Icon size={20} /></div></div><div className="service-card-body"><div className="service-card-top"><span className="service-number">0{index + 1}</span></div><h3>{title}</h3><p>{description}</p><button className="service-link" onClick={() => setBookingOpen(true)}>Request service <ArrowRight size={14} /></button></div></article>)}</div></div></section>
 
       <section className="cream-section pricing-section" id="pricing"><SectionHeading eyebrow="PRICING & PACKAGES" title={<>Service <em>pricing.</em></>} text="Transparent rates for common electrical work. Custom quotes available for larger projects." /><div className="pricing-grid">{pricing.map((plan) => <div className={`pricing-card ${plan.popular ? 'popular' : ''}`} key={plan.name}>{plan.popular && <span className="popular-tag">Most Popular</span>}<h3>{plan.name}</h3><div className="price-display"><b>{plan.price}</b><span>{plan.unit}</span></div><ul>{plan.features.map((feature) => <li key={feature}><Check size={14} /> {feature}</li>)}</ul><button className="button button-copper" onClick={() => setBookingOpen(true)}>{tr.bookNow} <ArrowRight size={16} /></button><button className="button button-outline" onClick={() => setQuoteOpen(true)}>{tr.customQuote}</button></div>)}</div></section>
 
